@@ -55,9 +55,10 @@
              upper <- q3 + k * factor * iqr
            },
            walker = {
-             factor <- (1 - BC) / (1 + BC)
-             lower <- q1 - k * iqr * factor
-             upper <- q3 + k * iqr * factor
+             factor_l <- (1 - BC) / (1 + BC)
+             factor_u <- (1 + BC) / (1 - BC)
+             lower <- q1 - k * iqr * factor_l
+             upper <- q3 + k * iqr * factor_u
            },
            junsawang = {
              ratio <- ifelse(q3 == q2, 0, (q2 - q1) / (q3 - q2))
