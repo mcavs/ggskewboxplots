@@ -40,9 +40,10 @@
              upper <- q3 + 2 * k * (q3 - q2)
            },
            hubert = {
-             factor <- exp(-3 * mc)
-             lower <- q1 - k * factor * iqr
-             upper <- q3 + k * factor * iqr
+             factor_l <- exp(-4 * mc)
+             factor_u <- exp(3 * mc)
+             lower <- q1 - k * factor_l * iqr
+             upper <- q3 + k * factor_u * iqr
            },
            adil = {
              factor <- exp(sk * abs(mc))
