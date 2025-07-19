@@ -28,7 +28,7 @@
       max(min(s, 3.5), -3.5)
     }
 
-    BC <- (q3 - q1 - 2 * q2) / iqr
+    BC <- (q3 + q1 - 2 * q2) / (q3 - q1)
 
     switch(tolower(method),
            tukey = {
