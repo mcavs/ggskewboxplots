@@ -40,7 +40,7 @@
              upper <- q3 + 2 * k * (q3 - q2)
            },
            hubert = {
-             if(MC > 0) {
+             if(mc > 0) {
                factor_l <- exp(-4 * mc)
                factor_u <- exp(3 * mc)
                lower <- q1 - k * factor_l * iqr
