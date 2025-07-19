@@ -70,10 +70,10 @@
              upper <- q3 + k * iqr * factor_u
            },
            junsawang = {
-             ratio <- ifelse(q3 == q2, 0, (q2 - q1) / (q3 - q2))
-             factor <- exp(BC * ratio)
-             lower <- q1 - k * factor * iqr
-             upper <- q3 + k * factor * iqr
+             factor_l <- exp(BC * (q2 - q1) / (q3 - q2))
+             factor_u <- exp(BC * (q3 - q2) / (q2 - q1))
+             lower <- q1 - k * factor_l * iqr
+             upper <- q3 + k * factor_u * iqr
            },
            stop("Unknown method")
     )
