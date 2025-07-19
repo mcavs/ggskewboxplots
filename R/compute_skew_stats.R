@@ -54,9 +54,10 @@
              }
            },
            adil = {
-             factor <- exp(sk * abs(mc))
-             lower <- q1 - k * iqr * factor
-             upper <- q3 + k * iqr * factor
+             factor_l <- exp(-sk * abs(mc))
+             factor_u <- exp(sk * abs(mc))
+             lower <- q1 - k * iqr * factor_l
+             upper <- q3 + k * iqr * factor_u
            },
            babura = {
              factor <- exp(6 * BC)
