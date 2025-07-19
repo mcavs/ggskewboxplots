@@ -73,11 +73,13 @@
     #upper <- min(upper, max(x, na.rm = TRUE))
 
     list(
-      ymin = if (any(x >= lower)) min(x[x >= lower], na.rm = TRUE) else min(x, na.rm = TRUE),
+      #ymin = if (any(x >= lower)) min(x[x >= lower], na.rm = TRUE) else min(x, na.rm = TRUE),
+      ymin = lower,
       lower = q1,
       middle = q2,
       upper = q3,
-      ymax = if (any(x <= upper)) max(x[x <= upper], na.rm = TRUE) else max(x, na.rm = TRUE),
+      #ymax = if (any(x <= upper)) max(x[x <= upper], na.rm = TRUE) else max(x, na.rm = TRUE),
+      ymax = upper,
       outliers = x[x < lower | x > upper]
     )
   }
