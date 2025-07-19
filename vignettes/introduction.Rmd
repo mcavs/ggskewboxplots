@@ -1,0 +1,73 @@
+---
+title: "Introduction to ggskewboxplots"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ggskewboxplots}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# What is `ggskewboxplots`?
+
+The package provides alternative boxplots that help better visualize the skewness and asymmetry in data distributions by using different lower and upper whisker calculations than the classic boxplot.
+
+
+# Installation and Loading
+
+Since you are developing locally, load the package using:
+
+```{r}
+library(ggskewboxplots)
+```
+
+
+# Basic Usage
+
+Here is an example of drawing alternative boxplots of hwy by class in the mpg dataset:
+
+```{r}
+library(ggplot2)
+library(ggskewboxplots)
+
+ggplot(mpg, aes(x = class, y = hwy)) +
+  geom_skewboxplot(method = "walker")
+```
+
+
+# Methods
+
+You can choose from the following whisker calculation methods by setting the method argument in `geom_skewboxplot()`:
+
+| Method        | Description                               |
+| ------------- | ----------------------------------------- |
+| `"tukey"`     | Classic Tukey boxplot                     |
+| `"kimber"`    | Kimber’s modified method                  |
+| `"hubert"`    | Hubert’s median-based skewness method     |
+| `"adil"`      | Combination of skewness and median center |
+| `"babura"`    | Bowley’s coefficient method (variant 1)   |
+| `"walker"`    | Bowley’s coefficient method (variant 2)   |
+| `"junsawang"` | Bowley coefficient alternative method     |
+
+
+# Additional Parameters
+
+`k`: Tuning parameter for whisker length (default is 1.5). For example:
+
+```{r}
+ggplot(mpg, aes(x = class, y = hwy)) +
+  geom_skewboxplot(method = "adil", k = 2)
+```
+
+
+# Example: Comparing Different Methods
+
+```{r}
+library(gridExtra)
+
+p1 <- ggplot(mpg, aes(x = class, y = hwy)) + geom_skewboxplot(method = "tukey") + ggtitle("Tukey")
+p2 <- ggplot(mpg, aes(x = class, y = hwy)) + geom_skewboxplot(method = "kimber") + ggtitle("Kimber")
+p3 <- ggplot(mpg, aes(x = class, y = hwy)) + geom_skewboxplot(method = "hubert") + ggtitle("Hubert")
+
+gridExtra::grid.arrange(p1, p2, p3, ncol = 1)
+```
+
