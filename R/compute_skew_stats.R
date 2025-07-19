@@ -69,8 +69,8 @@
            stop("Unknown method")
     )
 
-    lower <- max(lower, min(x, na.rm = TRUE))
-    upper <- min(upper, max(x, na.rm = TRUE))
+    #lower <- max(lower, min(x, na.rm = TRUE))
+    #upper <- min(upper, max(x, na.rm = TRUE))
 
     list(
       ymin = if (any(x >= lower)) min(x[x >= lower], na.rm = TRUE) else min(x, na.rm = TRUE),
